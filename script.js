@@ -1,4 +1,3 @@
-console.log("El script funcionoa bien");
 body {
     display: flex;
     justify-content: center;
