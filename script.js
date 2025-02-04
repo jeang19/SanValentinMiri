@@ -1,63 +1,29 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #fcecec;
-    font-family: 'Arial', sans-serif;
-}
+const noButton = document.getElementById("noButton");
+const yesButton = document.getElementById("yesButton");
+const question = document.getElementById("question");
+const catImage = document.getElementById("catImage");
 
-.window {
-    background: white;
-    width: 350px;
-    border-radius: 10px;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-}
+const images = ["gatito1.jpg", "gatito2.jpg", "gatito3.jpg", "gatito4.jpg", "gatito5.jpg"];
+let clickCount = 0;
 
-.header {
-    display: flex;
-    justify-content: flex-start;
-    gap: 5px;
-}
+noButton.addEventListener("click", () => {
+    if (clickCount < images.length - 1) {
+        catImage.src = images[clickCount + 1];
+        clickCount++;
 
-.circle {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #ff99a5;
-}
+        // Hace el botón "Sí" más grande
+        yesButton.style.transform = `scale(${1 + clickCount * 0.2})`;
 
-h2 {
-    font-size: 18px;
-    margin-bottom: 15px;
-}
+        // Última iteración, oculta el botón "No"
+        if (clickCount === images.length - 1) {
+            noButton.remove();
+        }
+    }
+});
 
-img {
-    width: 200px;
-    border-radius: 10px;
-}
-
-.buttons {
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
-}
-
-#yesButton {
-    background: #ff99a5;
-    color: white;
-}
-
-#noButton {
-    background: #ffcccc;
-    color: black;
-}
+yesButton.addEventListener("click", () => {
+    question.innerHTML = "¡Gracias, mi amor! 💖";
+    catImage.src = "corazon.jpg"; // Imagen final
+    yesButton.remove();
+    noButton.remove();
+});
