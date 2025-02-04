@@ -1,3 +1,4 @@
+<script src="script.js"></script>
 body {
     display: flex;
     justify-content: center;
